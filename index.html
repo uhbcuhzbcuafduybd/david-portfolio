@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,34 +7,42 @@
   <style>
     body {
       font-family: sans-serif;
-      background-color: #111;
-      color: #fff;
+      background-color: #fff;
+      color: #000;
       margin: 0;
       padding: 0;
     }
     header {
-      background-color: #222;
+      background-color: #f4f4f4;
       padding: 1rem;
       text-align: center;
+      border-bottom: 1px solid #ddd;
     }
     nav a {
       margin: 0 1rem;
-      color: #0ff;
+      color: #333;
       text-decoration: none;
+      font-weight: bold;
     }
     section {
       padding: 2rem;
     }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
     .gallery img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
-      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
     }
     footer {
-      background-color: #222;
+      background-color: #f4f4f4;
       text-align: center;
       padding: 1rem;
-      margin-top: 2rem;
+      border-top: 1px solid #ddd;
     }
   </style>
 </head>
@@ -42,29 +50,31 @@
   <header>
     <h1>David | Photographer</h1>
     <nav>
-      <a href="#about">Обо мне</a>
-      <a href="#portfolio">Портфолио</a>
-      <a href="#contact">Контакты</a>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <section id="about">
-    <h2>Обо мне</h2>
-    <p>Я — Дэвид, студент и фотограф, живущий в США. Работаю с уличной эстетикой, людьми и светом. Моё искусство — мои глаза.</p>
+    <h2>About Me</h2>
+    <p>I'm David — a student and photographer based in the U.S. I work with street aesthetics, people, and light. My art is how I see the world.</p>
   </section>
 
   <section id="portfolio">
-    <h2>Портфолио</h2>
+    <h2>Portfolio</h2>
     <div class="gallery">
-      <img src="photo1.jpg" alt="Работа 1" />
-      <img src="photo2.jpg" alt="Работа 2" />
-      <img src="photo3.jpg" alt="Работа 3" />
+      <img src="alPHaBett.jpg" alt="alPHaBett" />
+      <img src="bvvind0w.jpg" alt="bvvind0w" />
+      <img src="bwg1ЯL.jpg" alt="bwg1ЯL" />
+      <img src="c@T.png" alt="c@T" />
+      <img src="fl@wer$.jpg" alt="fl@wer$" />
     </div>
   </section>
 
   <section id="contact">
-    <h2>Контакты</h2>
-    <p>Почта: davidphoto@gmail.com</p>
+    <h2>Contact</h2>
+    <p>Email: davidphoto@gmail.com</p>
     <p>Instagram: @david.visual</p>
   </section>
 
@@ -72,10 +82,4 @@
     <p>&copy; 2025 David Portfolio</p>
   </footer>
 </body>
-</html> 
-alPHaBett.jpg
-bvvind0w.jpg
-bwg1ЯL.jpg
-c@T.png
-fl@wer$.jpg
-
+</html>
