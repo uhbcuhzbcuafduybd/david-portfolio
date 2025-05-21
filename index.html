@@ -4,45 +4,84 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>David Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: sans-serif;
-      background-color: #fff;
-      color: #000;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #000000;
       margin: 0;
       padding: 0;
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
     }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
     header {
-      background-color: #f4f4f4;
+      background-color: #f2f2f2;
       padding: 1rem;
       text-align: center;
       border-bottom: 1px solid #ddd;
     }
+
     nav a {
       margin: 0 1rem;
       color: #333;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
+      transition: all 0.3s ease;
     }
+
+    nav a:hover {
+      color: #000;
+      text-decoration: underline;
+    }
+
     section {
       padding: 2rem;
+      max-width: 800px;
+      margin: auto;
     }
+
+    h2 {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
     }
+
     .gallery img {
       width: 100%;
       height: auto;
       border: 1px solid #ccc;
-      border-radius: 8px;
+      transition: transform 0.3s ease;
     }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
     footer {
-      background-color: #f4f4f4;
+      background-color: #f2f2f2;
       text-align: center;
       padding: 1rem;
-      border-top: 1px solid #ddd;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #555;
     }
   </style>
 </head>
@@ -58,17 +97,17 @@
 
   <section id="about">
     <h2>About Me</h2>
-    <p>I'm David — a student and photographer based in the U.S. I work with street aesthetics, people, and light. My art is how I see the world.</p>
+    <p>I'm David, a student and photographer based in the U.S. I capture streets, people, and light. My art is what I see — honest, real, alive.</p>
   </section>
 
   <section id="portfolio">
     <h2>Portfolio</h2>
     <div class="gallery">
-      <img src="alPHaBett.jpg" alt="alPHaBett" />
-      <img src="bvvind0w.jpg" alt="bvvind0w" />
-      <img src="bwg1ЯL.jpg" alt="bwg1ЯL" />
-      <img src="c@T.png" alt="c@T" />
-      <img src="fl@wer$.jpg" alt="fl@wer$" />
+      <img src="alPHaBett.jpg" alt="Work 1" />
+      <img src="bvvind0w.jpg" alt="Work 2" />
+      <img src="bwg1ЯL.jpg" alt="Work 3" />
+      <img src="c@T.png" alt="Work 4" />
+      <img src="fl@wer$.jpg" alt="Work 5" />
     </div>
   </section>
 
