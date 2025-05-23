@@ -20,7 +20,6 @@
       overflow-x: hidden;
       scroll-behavior: smooth;
       transition: all 0.5s ease-in-out;
-      position: relative;
     }
 
     body::before {
@@ -28,14 +27,12 @@
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       background: radial-gradient(circle at center, #ffffff, #eaeaea);
-      z-index: -2;
+      z-index: -1;
     }
 
     header {
       text-align: center;
       padding: 2rem;
-      position: relative;
-      z-index: 2;
     }
 
     nav a {
@@ -54,8 +51,6 @@
       padding: 4rem 2rem;
       max-width: 900px;
       margin: 0 auto;
-      position: relative;
-      z-index: 2;
     }
 
     h1, h2 {
@@ -67,13 +62,31 @@
       line-height: 1.6;
     }
 
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      filter: brightness(95%) contrast(105%) saturate(110%) blur(0.3px);
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.02);
+      filter: brightness(100%) blur(0px);
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
       color: #666;
-      position: relative;
-      z-index: 2;
     }
 
     .fade-in {
@@ -98,49 +111,50 @@
     a.social:hover {
       text-decoration: underline;
     }
-
-    .floating-img {
-      position: absolute;
-      width: 150px;
-      height: auto;
-      top: -300px;
-      cursor: grab;
-      z-index: 1;
-      transition: opacity 1s;
-    }
   </style>
 </head>
 <body>
   <header>
     <h1>David | Digital Artist & Photographer</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="contact.html">Contact</a>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <section class="fade-in">
+  <section id="home" class="fade-in">
     <h2>Welcome</h2>
     <p>This is the portfolio website of David — a photographer and digital artist who captures the aesthetic between shadow and soul.</p>
   </section>
 
+  <section id="about" class="fade-in">
+    <h2>About Me</h2>
+    <p>I'm David, a student and artist exploring photography and digital visuals. I capture streets, people, light, and the emotion between them. My work is honest, raw, and alive. This site is my evolving portfolio — a visual journey in real time.</p>
+  </section>
+
+  <section id="portfolio" class="fade-in">
+    <h2>Portfolio</h2>
+    <div class="gallery">
+      <img src="alPHaBett.jpg" alt="Work 1" />
+      <img src="bvvind0w.jpg" alt="Work 2" />
+      <img src="bwg1ЯL.jpg" alt="Work 3" />
+      <img src="c@T.png" alt="Work 4" />
+      <img src="fl@wer$.jpg" alt="Work 5" />
+    </div>
+  </section>
+
+  <section id="contact" class="fade-in">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:d87280017@gmail.com">d87280017@gmail.com</a></p>
+    <p>Instagram: <a href="https://instagram.com/hiokure" target="_blank">@hiokure</a></p>
+    <p>X (Twitter): <a href="https://x.com/example" target="_blank">@example</a></p>
+  </section>
+
   <footer>
-    <p>Connect: 
-      <a class="social" href="https://instagram.com/hiokure" target="_blank">Instagram</a> | 
-      <a class="social" href="mailto:d87280017@gmail.com">Email</a> | 
-      <a class="social" href="https://x.com/example" target="_blank">X (Twitter)</a>
-    </p>
     <p>&copy; 2025 David</p>
   </footer>
-
-  <!-- Floating Images -->
-  <img src="alPHaBett.jpg" class="floating-img" id="img1">
-  <img src="bvvind0w.jpg" class="floating-img" id="img2">
-  <img src="bwg1ЯL.jpg" class="floating-img" id="img3">
-  <img src="c@T.png" class="floating-img" id="img4">
-  <img src="fl@wer$.jpg" class="floating-img" id="img5">
 
   <script>
     const fadeIns = document.querySelectorAll('.fade-in');
@@ -151,45 +165,13 @@
         }
       });
     }, { threshold: 0.1 });
+
     fadeIns.forEach(el => observer.observe(el));
 
     // Parallax movement effect
     document.addEventListener('mousemove', (e) => {
       document.body.style.transform = `translate(${(e.clientX - window.innerWidth/2)*0.01}px, ${(e.clientY - window.innerHeight/2)*0.01}px)`;
     });
-
-    // Floating photos drop and drag logic
-    const imgs = document.querySelectorAll('.floating-img');
-
-    imgs.forEach((img, i) => {
-      setTimeout(() => {
-        img.style.top = Math.random() * window.innerHeight + 'px';
-        img.style.left = Math.random() * window.innerWidth + 'px';
-        img.style.opacity = 1;
-      }, i * 500);
-
-      let offsetX = 0, offsetY = 0, dragging = false;
-
-      img.addEventListener('mousedown', (e) => {
-        dragging = true;
-        offsetX = e.clientX - img.offsetLeft;
-        offsetY = e.clientY - img.offsetTop;
-        img.style.cursor = 'grabbing';
-      });
-
-      window.addEventListener('mouseup', () => {
-        dragging = false;
-        img.style.cursor = 'grab';
-      });
-
-      window.addEventListener('mousemove', (e) => {
-        if (dragging) {
-          img.style.left = e.clientX - offsetX + 'px';
-          img.style.top = e.clientY - offsetY + 'px';
-        }
-      });
-    });
   </script>
 </body>
 </html>
-
