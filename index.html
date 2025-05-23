@@ -3,104 +3,138 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>David Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>David | Digital Artist & Photographer</title>
   <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
-      color: #000000;
+    * {
       margin: 0;
       padding: 0;
-      opacity: 0;
-      animation: fadeIn 1.2s ease forwards;
+      box-sizing: border-box;
     }
 
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+    html, body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: #fff;
+      color: #111;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      transition: all 0.5s ease-in-out;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at center, #ffffff, #eaeaea);
+      z-index: -1;
     }
 
     header {
-      background-color: #f2f2f2;
-      padding: 1rem;
       text-align: center;
-      border-bottom: 1px solid #ddd;
+      padding: 2rem;
     }
 
     nav a {
       margin: 0 1rem;
-      color: #333;
       text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s ease;
+      color: #111;
+      font-weight: 700;
+      transition: color 0.3s;
     }
 
     nav a:hover {
-      color: #000;
-      text-decoration: underline;
+      color: #999;
     }
 
     section {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    h2 {
+    h1, h2 {
+      font-weight: 700;
       margin-bottom: 1rem;
-      font-weight: 600;
+    }
+
+    p {
+      line-height: 1.6;
     }
 
     .gallery {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
+      margin-top: 2rem;
     }
 
     .gallery img {
       width: 100%;
       height: auto;
-      border: 1px solid #ccc;
-      transition: transform 0.3s ease;
+      border-radius: 12px;
+      filter: brightness(95%) contrast(105%) saturate(110%) blur(0.3px);
+      transition: transform 0.4s ease, filter 0.4s ease;
     }
 
     .gallery img:hover {
-      transform: scale(1.03);
+      transform: scale(1.02);
+      filter: brightness(100%) blur(0px);
     }
 
     footer {
-      background-color: #f2f2f2;
       text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
+      padding: 2rem;
       font-size: 0.9rem;
-      color: #555;
+      color: #666;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    a.social {
+      display: inline-block;
+      margin: 0.5rem;
+      color: #111;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a.social:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>David | Photographer</h1>
+    <h1>David | Digital Artist & Photographer</h1>
     <nav>
+      <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#portfolio">Portfolio</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I'm David, a student and photographer based in the U.S. I capture streets, people, and light. My art is what I see — honest, real, alive.</p>
+  <section id="home" class="fade-in">
+    <h2>Welcome</h2>
+    <p>This is the portfolio website of David — a photographer and digital artist who captures the aesthetic between shadow and soul.</p>
   </section>
 
-  <section id="portfolio">
+  <section id="about" class="fade-in">
+    <h2>About Me</h2>
+    <p>I'm David, a student and artist exploring photography and digital visuals. I capture streets, people, light, and the emotion between them. My work is honest, raw, and alive. This site is my evolving portfolio — a visual journey in real time.</p>
+  </section>
+
+  <section id="portfolio" class="fade-in">
     <h2>Portfolio</h2>
     <div class="gallery">
       <img src="alPHaBett.jpg" alt="Work 1" />
@@ -111,14 +145,33 @@
     </div>
   </section>
 
-  <section id="contact">
+  <section id="contact" class="fade-in">
     <h2>Contact</h2>
-    <p>Email: d87280017@gmail.com</p>
-    <p>Instagram: @hiokure</p>
+    <p>Email: <a href="mailto:d87280017@gmail.com">d87280017@gmail.com</a></p>
+    <p>Instagram: <a href="https://instagram.com/hiokure" target="_blank">@hiokure</a></p>
+    <p>X (Twitter): <a href="https://x.com/example" target="_blank">@example</a></p>
   </section>
 
   <footer>
-    <p>&copy; 2025 David Portfolio</p>
+    <p>&copy; 2025 David</p>
   </footer>
+
+  <script>
+    const fadeIns = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    fadeIns.forEach(el => observer.observe(el));
+
+    // Parallax movement effect
+    document.addEventListener('mousemove', (e) => {
+      document.body.style.transform = `translate(${(e.clientX - window.innerWidth/2)*0.01}px, ${(e.clientY - window.innerHeight/2)*0.01}px)`;
+    });
+  </script>
 </body>
 </html>
